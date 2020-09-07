@@ -9,8 +9,6 @@ price.addEventListener('input', function()
   output.textContent = price.value;
 });
 
-
-
 var btn2 = document.createElement("BUTTON");
 btn2.innerHTML = "Click Me";
 document.getElementById("append").appendChild(btn2);
@@ -25,6 +23,7 @@ btn2.addEventListener('click', function()
   para.style.textAlign = 'center';
 
 });
+
 //https://www.w3schools.com/JSREF/met_document_createelement.asp
 var btn = document.createElement("BUTTON");
 btn.innerHTML = "Show More";
@@ -43,9 +42,3 @@ btn.addEventListener('click', function()
   ul.appendChild(li2);
 
 });
-
-
-// const sect = document.querySelector('section');
-// const para = document.createElement('ul');
-// para.textContent = 'Other Diets';
-// sect.appendChild(para);
