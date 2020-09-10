@@ -39,5 +39,7 @@ body {
 .name
 {
     background-color: #ddd;
+    text-align: center;;
+    font-size: 40px;
 
 }
