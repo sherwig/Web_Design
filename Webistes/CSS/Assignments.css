@@ -1,6 +1,7 @@
 
 #title1{
-margin-top: 20px;
+margin-top: 8%;
+font-family: "Lato Heavy";
 }
 
 #image1, #image2{
@@ -8,6 +9,8 @@ margin-top: 20px;
   width: 55%;
   opacity: 1;
   max-width: 100%
+  margin-left: auto;
+  margin-right: auto;
 
 }
 .container {
@@ -20,8 +23,8 @@ margin-top: 20px;
   transition: .5s ease;
   opacity: 0;
   position: absolute;
-  top: 36%;
-  left: 42%;
+  top: 35%;
+  left: 41%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
@@ -50,6 +53,7 @@ margin-top: 20px;
   background-color: #333;
   overflow: hidden;
 
+  max-width: 100%;
 }
 
 /* Style the links inside the navigation bar */
@@ -60,7 +64,7 @@ margin-top: 20px;
   text-align: center;
   padding: 2% 8.1%;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.1em;
 
 }
 
@@ -81,22 +85,66 @@ margin-top: 20px;
   display: none;
 }
 
+
+#journal, #labs, #projects, #home{
+  color: white;
+  font-size: 1.1em;
+}
+
 @media screen and (max-width: 800px) {
   /* .topnav a {
       padding: 2% 8.1%;
   } */
+  body{
+    width: auto;
+    padding-left: 20%;
+    padding-right:20%;
+  }
 
   .topnav a {
    float: none;
    width: 100%;
+    text-align: left;
  }
 }
 
 
 body {
-  width: 34.5%;
+  /* width: 34.5%; */
+  width: auto;
+  padding-left: 30%;
+  padding-right:30%;
   margin: 0 auto;
   background-color: #FFFFFF;
+  font-family: "Merriweather";
+
+  /* padding: 0 10px 10px 10px;
+  border: 5px solid black; */
+}
+
+a:link
+{
+  color: #3FA0EF;
+  text-decoration: none;
+  font-size: 1.3em;
+}
+
+a:visited {
+  color: #000000;
+  text-decoration: none;
+  font-size: 1.3em;
+}
+
+.h3{
+  font-size: 1.3em;
+
+}
+
+.h1 {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+
   /* padding: 0 10px 10px 10px;
   border: 5px solid black; */
 }
