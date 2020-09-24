@@ -10,10 +10,12 @@ function quiz(){
 	  'How many moons does Saturn have?',
 	  'How many moons does Venus have?'
 	];
+
 	var quiz_answers=[1, 82, 0];
 
 	//get total number of questions
-	var totalQuestion=quiz_questions.count;
+	var totalQuestion=quiz_questions.length;
+	// console.log(totalQuestion);
 
 	//generate random number for question
 	num=Math.floor(Math.random()*3);
@@ -23,7 +25,7 @@ function quiz(){
 		question=quiz_questions[num];
 		answer=prompt(question);
 
-    if (answer=quiz_answers[num])
+    if (answer==quiz_answers[num])
     {
 			score++;
 			alert("Correct!");
