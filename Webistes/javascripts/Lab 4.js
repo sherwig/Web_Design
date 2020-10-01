@@ -3,15 +3,33 @@
 $( document ).ready(function()
 {
 
+  var title= $("#title");
+  title.mouseenter(function() {
+      title.css("opacity", ".5");
+  });
+
+  title.mouseleave(function() {
+      title.css("opacity", "1");
+
+  });
+
   // $("#Pgraph").css("backgroundColor", "yellow");
   var para= $("#Pgraph");
-  para.css("backgroundColor", "yellow");
+  para.mouseenter(function() {
+      para.css("color", "white");
+  });
+
+  para.mouseleave(function() {
+      para.css("color", "black");
+
+  });
+
   // $("loop1").css("backgroundColor", "yellow");
 
   var image=$('#loop1');
   image.hide();
-  image.width(700);
-  image.height(700);
+  image.width(400);
+  image.height(400);
 
   var clicker= $('#clicker');
 
@@ -28,12 +46,21 @@ $( document ).ready(function()
   });
 });
 
+image.mouseenter(function() {
+    image.width(600);
+    image.height(600);
+});
+
+image.mouseleave(function() {
+    image.width(400);
+    image.height(400);
+});
 
 
   var image2=$('#loop2');
   image2.hide();
-  image2.width(700);
-  image2.height(700);
+  image2.width(600);
+  image2.height(600);
 
   var video=$('#video');
   video.hide();
@@ -43,6 +70,18 @@ $( document ).ready(function()
   image2.fadeIn( "slow", function() {
     // Animation complete
   });
+
+  image2.mouseenter(function() {
+      image2.width(600);
+      image2.height(600);
+  });
+
+  image2.mouseleave(function() {
+      image2.width(400);
+      image2.height(400);
+  });
+
+
 
   video.fadeIn( "slow", function() {
     // Animation complete

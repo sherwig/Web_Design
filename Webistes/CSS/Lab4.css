@@ -1,0 +1,26 @@
+body {
+
+  width: auto;
+  padding-left: 30%;
+  padding-right:30%;
+  margin: 5% auto;
+  background-color: #FFFFFF;
+  font-family: "Merriweather";
+
+  background: -webkit-linear-gradient(top, #6BD0FF, #FFFFFF);
+  background-attachment: fixed;
+
+}
+
+a:link
+{
+  color: #3FA0EF;
+  text-decoration: none;
+  font-size: 1.3em;
+}
+
+a:visited {
+  color: #000000;
+  text-decoration: none;
+  font-size: 1.3em;
+}
