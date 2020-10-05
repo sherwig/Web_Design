@@ -1,14 +1,14 @@
 //Snowfall.js
 
 // Code from: https://developers.google.com/chart/interactive/docs/gallery/columnchart
+var mountain1= "Whistler";
+var mountain2 = "Chamonix";
+var mountain3 = "Breckenridge";
 
 google.charts.load('current', {'packages':['bar']});
-google.charts.setOnLoadCallback(drawChart);
-var mountain1= "Whistler";
-var tester;
+google.charts.setOnLoadCallback(drawChart(mountain1, mountain2, mountain3));
 
-
-window.onload=function(){
+$(function(){
 
 //   function getSelectedOption(sel) {
 //     var opt;
@@ -27,24 +27,34 @@ window.onload=function(){
 
   function setMountain()
   {
-    if (document.getElementById("mountain1-select").value!="none"){
-      mountain1= document.getElementById("mountain1-select").value;
+    var chkCnt = 0;
+    if ($("#mountain-select1").val() !="none"){
+      mountain1= $("#mountain-select1").val();
+      chkCnt ++;
+    }
+    if ($("#mountain-select2").val() !="none"){
+      mountain2= $("#mountain-select2").val();
+      chkCnt ++;
+    }
+    if ($("#mountain-select3").val() !="none"){
+      mountain3= $("#mountain-select3").val();
+      chkCnt ++;
+    }
+    console.log(chkCnt);
+    if (chkCnt == 4){
+      drawChart(mountain1, mountain2, mountain3);
     }
   }
 
-  var cu=document.getElementById("enter");
+
   // cu.addEventListener("click", setMountain, false);
 
-  cu.addEventListener("submit", function(event){
-  setMountain();
-  event.preventDefault(); //prevents page from being reloaded
+  $("#enter").click(function(){
+    setMountain();
   });
-};
+});
 
-
-
-
-function drawChart() {
+function drawChart(mount1, mount2, mount3) {
 
   // var mountain1 = document.querySelector('#mountain-select1').value;
   // let mountain1 = document.getElementById('mountain-select1').value;
@@ -64,9 +74,9 @@ function drawChart() {
   // $("mountain-select1 :selected").val(); // The value of the selected option
 
 
-
+  alert("Mount1= " + mount1 + "Mount3= " + mount2 + "Mount3= " + mount3);
   var data = google.visualization.arrayToDataTable([
-    ['Total Snow Fall', mountain1, 'Chamonix', 'Breckenridge'],
+    ['Total Snow Fall', mount1, mount2, mount3],
     ['2014', 1000, 400, 200],
     ['2015', 1170, 460, 250],
     ['2016', 660, 1120, 300],
