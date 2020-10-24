@@ -1,0 +1,100 @@
+<!-- Lab6.html -->
+
+
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+
+ </head>
+ <body>
+  <!-- <h1> Lab 6 </h1> -->
+
+  <h1> Bandwagon Quiz  With Firebase</h1>
+
+  <form action="" method="get" class="form-example">
+
+      <div class="Favorite_team">
+        <label for="team">Enter your favorite team: </label>
+        <input type="text" name="team" id="Fave" >
+      </div>
+
+      <div class="whereFrom">
+        <label for="email">Enter where you are from: </label>
+        <input type="text" name="from" id="From">
+      </div>
+
+
+  <h3>Choose your Favorite Sport</h3>
+
+  <div>
+      <label for="Football" >Football</label>
+      <input type="radio" name="Sport" id="Football" value="Basketball">
+  </div>
+
+    <div>
+      <label for="Basketball" >Basketball</label>
+      <input type="radio" name="Sport" id="Basketball" value="Basketball">
+
+    </div>
+
+    <div>
+        <label for="Hockey">Hockey</label>
+        <input type="radio" name="Sport" id="Hockey" value="Hockey">
+
+    </div>
+
+      <div>
+        <label for="Baseball">Baseball</label>
+        <input type="radio" name="Sport" id="Baseball" value="Baseball">
+
+      </div>
+
+
+  <h3>Are you a fan of</h3>
+
+  <div>
+    <label for="Defense">Defense</label>
+    <input type="checkbox" id="Defense" value="Defense">
+  </div>
+
+  <div>
+    <label for="Offense">Offense</label>
+    <input type="checkbox" id="Offense" value="Offense">
+  </div>
+
+  <div>
+    <label for="Stars">Stars</label>
+    <input type="checkbox" id="Stars" value="Stars">
+  </div>
+
+  <button type="button" id="Button1" > Enter </button>
+
+  <textarea id="wagon" rows="10" cols="30"></textarea>
+
+  </form>
+
+
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-analytics.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-firestore.js"></script>
+
+  <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyByar2zIXFIVoYr_2Ky3i8Vq0kQ_TNkPGU",
+        authDomain: "lab-6-76d88.firebaseapp.com",
+        databaseURL: "https://lab-6-76d88.firebaseio.com",
+        projectId: "lab-6-76d88",
+        storageBucket: "lab-6-76d88.appspot.com",
+        messagingSenderId: "859656048911",
+        appId: "1:859656048911:web:b11f9978665e9ea73aae7a",
+        measurementId: "G-47GNFBDQZX"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="Javascripts/Lab6.js"> </script>
+</body>
+</html>

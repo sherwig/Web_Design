@@ -1,0 +1,243 @@
+Web Notes
+
+
+Use Cloud Firestore not realtime
+
+Need to add in Javascripts to the header of HTMl as well.
+
+Start Collection
+  But need to add a single document in it
+  the File itself is in mostly JSON Format
+
+
+Put this in the body of the <body> tag.
+  <!-- Firebase -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-firestore.js"></script>
+
+
+
+
+  <script>
+    // Your web app's Firebase configuration GET THIS FROM SETTINGS
+    var firebaseConfig = {
+      apiKey: "AIzaSyBiB_MUMQEVrY4fhd_YBLyb4tO0uv2Xouo",
+      authDomain: "buff-tickets.firebaseapp.com",
+      databaseURL: "https://buff-tickets.firebaseio.com",
+      projectId: "buff-tickets",
+      storageBucket: "buff-tickets.appspot.com",
+      messagingSenderId: "663114550856",
+      appId: "1:663114550856:web:3fd05141ab9b9d6e6cd27d"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="js/firebase_tickets_cfs.js"></script>
+
+
+//Code from a form to send to Data Base
+  database.collection("orders").add({
+  		name: new_name,
+  		email: new_email,
+  		team: new_team,
+  		payment: new_payment
+  	})
+  	.then(function(docRef) {
+  		console.log("Document written with ID: ", docRef.id);
+  	})
+  	.catch(function(error) {
+  		console.error("Error adding document: ", error);
+  	});
+
+
+//Reading from Firebase:
+
+// Get a reference to the database
+var database = firebase.firestore();
+
+var order_list = document.getElementById("orders");
+
+database.collection("orders").onSnapshot(function(querySnapshot) {
+	order_list.innerHTML = "";
+    querySnapshot.forEach(function(doc) {
+    	var name=doc.data().name;
+        var team=doc.data().team;
+        var payment=doc.data().payment.type;
+        order_list.innerHTML += "<span class='name'>" + name + "</span><span class='team'>" + team + "</span><span class='type'>" + payment +"</span><br>";
+    });
+});
+
+.get will retrieve entire document a single time
+
+
+Authentication with Firebase
+  Add Creative.colorado.edu as a custom Domain
+
+  Code for authentication:
+
+  Need to add <script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-auth.js"></script>
+
+
+  var database = firebase.firestore();
+
+// Create a storage reference from our database
+var docRef = database.collection("orders");
+
+//create instance of the Google provider instance
+var provider = new firebase.auth.GoogleAuthProvider();
+
+//user status div
+var user_info = document.getElementById("user_status");
+
+//current user
+var current_user = null;
+
+function authenticate(){
+	firebase.auth().getRedirectResult().then(function(result) {
+	  if (result.credential) {
+	    // This gives you a Google Access Token. You can use it to access the Google API.
+	    var token = result.credential.accessToken;
+	  }
+	  else {
+		  //google sign-in redirect
+		  firebase.auth().signInWithRedirect(provider);
+	  }
+	  // The signed-in user info
+	  current_user = result.user;
+	  user_info.innerHTML = "Hi, " + current_user.displayName;
+	}).catch(function(error) {
+	  // Handle Errors here.
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+	  // The email of the user's account used.
+	  var email = error.email;
+	  // The firebase.auth.AuthCredential type that was used.
+	  var credential = error.credential;
+	});
+}
+
+function signOut(){
+	firebase.auth().signOut().then(function() {
+		// Sign-out successful
+		user_info.innerHTML = "";
+	}).catch(function(error) {
+		// An error happened
+	});
+}
+
+//setting an event listener for change of authentication state
+firebase.auth().onAuthStateChanged(function(user) {
+	console.log("auth state changed");
+	current_user=user;
+	if (user) {
+    	// User is signed in
+		user_info.innerHTML = "Hi, " + user.displayName;
+  	} else {
+    	// No user is signed in
+		user_info.innerHTML = "";
+  	}
+});
+
+function order()
+{
+	if (current_user) {
+		// User is signed in
+		var new_name;
+		var new_email;
+		var new_street;
+		var new_city;
+		var new_state;
+		var new_zip;
+		var new_country;
+		var new_team;
+		var new_pay_type;
+		var new_card_num;
+		var new_exp_date;
+
+		//new_team
+		new_team = document.getElementById("team").value;
+
+		//new_name
+		new_name = document.getElementById("name").value;
+
+		//new_email
+		new_email = document.getElementById("email").value;
+
+		//address
+		new_street = document.getElementById("address").value;
+
+		//new_city
+		new_city = document.getElementById("city").value;
+
+		//new_state
+		new_state = document.getElementById("state").value;
+
+		//new_zip
+		new_zip = document.getElementById("zip").value;
+
+		//new_country
+		new_country = document.getElementById("country").value;
+
+		//payment
+		if (document.getElementById("venmo").checked == true){
+			new_pay_type = document.getElementById("venmo").value;
+		} else {
+			if (document.getElementById("visa").checked == true){
+				new_pay_type = document.getElementById("visa").value;
+			} else {
+				if (document.getElementById("mastercard").checked == true){
+					new_pay_type = document.getElementById("mastercard").value;
+				} else {
+					new_pay_type = "none";
+				}
+			}
+		}
+
+		//card number
+		new_card_num = document.getElementById("cardNumber").value;
+
+		//expiration date
+		new_exp_date = document.getElementById("expiration").value;
+
+		// Write a new document to firebase with a generated id.
+		database.collection("orders").add({
+			name: new_name,
+			billing_address:{
+				address: new_street,
+				city: new_city,
+				state: new_state,
+				zip: new_zip,
+				country: new_country
+			},
+			email: new_email,
+			team: new_team,
+			payment: {
+				type: new_pay_type,
+				card: new_card_num,
+				exp: new_exp_date
+			}
+		})
+		.then(function(docRef) {
+    		//console.log("Document written with ID: ", docRef.id);
+    		window.location.href = "firebase_order_confirm_cfs.html";
+		})
+		.catch(function(error) {
+			console.error("Error adding document: ", error);
+		});
+	}
+	else {
+		// No user is signed in.
+		alert("Please sign in to place an order");
+	}
+}
+
+document.getElementById("enter").addEventListener("click", order);
+document.getElementById("signin").addEventListener("click", authenticate);
+document.getElementById("signout").addEventListener("click", signOut);
+
+
+React Day 1
