@@ -16,35 +16,157 @@ document.body.appendChild( renderer.domElement );
 
 
   // var material = new THREE.MeshNormalMaterial();
-  // var color = new THREE.Color( "rgba(0,70,255,1)" );
-  // var material = new THREE.MeshLambertMaterial( {color: color.getHex()} );
+  var color = new THREE.Color( "rgba(0,70,255,1)" );
+  var material = new THREE.MeshLambertMaterial( {color: color.getHex()} );
 
-  // var geometry= new THREE.IcosahedronGeometry(0, 0);
+  var geometry= new THREE.IcosahedronGeometry(0, 0);
   // var color = new THREE.Color("#7833aa");
   // var material = new THREE.MeshPhongMaterial( {color: color.getHex(), specular: 0x009900, shinyness: 20 } );
-  //
-  // var cube = new THREE.Mesh( geometry, material );
-  // scene.add( cube );
-  //
-  // // update cube vertices
-  // for (var i = 0, l = geometry.vertices.length; i<l; i++) {
-  //     // we'll move the x & y position of each vertice by a random amount
-  //   geometry.vertices[i].x += -.01 + Math.random()*1.01;
-  //   geometry.vertices[i].y += -.2 + Math.random()*8;
-  // }
+
+  var cube = new THREE.Mesh( geometry, material );
+  scene.add( cube );
+
+  // update cube vertices
+  for (var i = 0, l = geometry.vertices.length; i<l; i++) {
+      // we'll move the x & y position of each vertice by a random amount
+    geometry.vertices[i].x += -.01 + Math.random()*1.01;
+    geometry.vertices[i].y += -.2 + Math.random()*8;
+  }
+
+  var geometry= new THREE.IcosahedronGeometry(0, 0);
+  var color = new THREE.Color("#7833aa");
+  var material = new THREE.MeshPhongMaterial( {color: color.getHex(), specular: 0x009900, shinyness: 20 } );
+
+  var cube2 = new THREE.Mesh( geometry, material );
+  scene.add( cube2 );
+
+  cube2.position.x=-3;
+
+  // update cube vertices
+  for (var i = 0, l = geometry.vertices.length; i<l; i++) {
+      // we'll move the x & y position of each vertice by a random amount
+    geometry.vertices[i].x += -.01 + Math.random()*1.01;
+    geometry.vertices[i].y += -.2 + Math.random()*8;
+  }
+
+
+  var geometry= new THREE.IcosahedronGeometry(0, 0);
+  var color = new THREE.Color("#7833aa");
+  var material = new THREE.MeshPhongMaterial( {color: color.getHex(), specular: 0x009900, shinyness: 20 } );
+
+  var cube3 = new THREE.Mesh( geometry, material );
+  scene.add( cube3 );
+
+  cube3.position.x=3;
+
+  // update cube vertices
+  for (var i = 0, l = geometry.vertices.length; i<l; i++) {
+      // we'll move the x & y position of each vertice by a random amount
+    geometry.vertices[i].x += -.01 + Math.random()*1.01;
+    geometry.vertices[i].y += -.2 + Math.random()*8;
+  }
+
+
+
+
   //
   // cube.position.x=Math.random(-3,3);
 
 // }
 
-var geometryCone = new THREE.ConeGeometry( 5, 15, 32 );
+var radius=5;
+var height=15;
+var radialSegments=32;
+
+var geometryCone = new THREE.ConeGeometry( radius, height, radialSegments );
 // var colorCone = new THREE.Color("#1A1AFF");
 var colorCone = new THREE.Color( "#1A1AFF" );
 var materialCone = new THREE.MeshLambertMaterial( {color: colorCone.getHex()} );
 // var materialCone = new THREE.MeshPhongMaterial( {color: colorCone.getHex(), specular: 0xFFFF00, shinyness: 10 } );
 // var materialCone = new THREE.MeshBasicMaterial( {color: 0xffff00} );
 var cone = new THREE.Mesh( geometryCone, materialCone );
-scene.add(cone);
+// scene.add(cone);
+
+var geometryCone = new THREE.ConeGeometry( radius, height, radialSegments );
+// var colorCone = new THREE.Color("#1A1AFF");
+var colorCone = new THREE.Color( "#1A1AFF" );
+var materialCone = new THREE.MeshLambertMaterial( {color: colorCone.getHex()} );
+// var materialCone = new THREE.MeshPhongMaterial( {color: colorCone.getHex(), specular: 0xFFFF00, shinyness: 10 } );
+// var materialCone = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+var cone2 = new THREE.Mesh( geometryCone, materialCone );
+// scene.add(cone2);
+
+var geometryCone = new THREE.ConeGeometry( radius, height, radialSegments );
+// var colorCone = new THREE.Color("#1A1AFF");
+var colorCone = new THREE.Color( "#1A1AFF" );
+var materialCone = new THREE.MeshLambertMaterial( {color: colorCone.getHex()} );
+// var materialCone = new THREE.MeshPhongMaterial( {color: colorCone.getHex(), specular: 0xFFFF00, shinyness: 10 } );
+// var materialCone = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+var cone3 = new THREE.Mesh( geometryCone, materialCone );
+// scene.add(cone3);
+
+cone2.position.x=radius*2;
+cone3.position.x=-radius*2;
+
+
+// camera.position.z = 5;
+
+var loader = new THREE.FontLoader();
+
+loader.load( 'Plugins/three/examples/fonts/helvetiker_regular.typeface.json', function ( font ) {
+
+	var geometry = new THREE.TextGeometry( 'Hello three.js!', {
+		font: font,
+		size: 80,
+		height: 5,
+		curveSegments: 12,
+		bevelEnabled: true,
+		bevelThickness: 10,
+		bevelSize: 8,
+		bevelOffset: 0,
+		bevelSegments: 5
+	} );
+} );
+
+function updateCamPosition() {
+  // rotate our camera's position on the z/y axis
+  angle += 0.005;
+  var z = 10+ 3 * Math.cos(angle);
+
+  var heightChanger= 2 * Math.cos(angle);
+  radius=heightChanger;
+
+
+  // var y = 3* Math.sin(angle);
+  // console.log(z);
+  camera.position.z = z;
+  // camera.position.y = y;
+
+  // l = geometry.vertices.size;
+  // console.log(l)
+
+  // for (var i = 0, l = geometry.vertices.length; i<l; i++) {
+  //     // we'll move the x & y position of each vertice by a random amount
+  //   geometry.vertices[i].x += z;
+  //   geometry.vertices[i].y += z;
+  // }
+
+
+//   for (var i = 0, l = geometryCone.vertices.length; i<l; i++) {
+//     // we'll move the x & y position of each vertice by a random amount
+//   geometryCone.vertices[i].x = z;
+//   geometryCone.vertices[i].y = z;
+// }
+
+  /* rotate the camera so the angle it faces animates -
+   there's no exact science to this - I just picked a
+   random percentage of the z position */
+
+  // camera.rotation.x = z*0.02;
+}
+
+
+
 
 
 var x = 0, y = 0;
@@ -149,18 +271,35 @@ scene.add(light);
 // light2.position.set(10, 10, 25);
 // scene.add(light2);
 
-camera.position.z = 15;
+
 
 var animate = function () {
   requestAnimationFrame(animate);
 
-  //cube.scale+=.1;
-  // cube.rotation.x += 0.02;
-  // cube.rotation.y += 0.01;
-  // cube.rotation.z += 0.01;
+  // updateCamPosition();
 
-  cone.rotation.y += 0.01;
-  // mountainShape.position.x += 0.01;
+
+  //cube.scale+=.1;
+  cube.rotation.x += 0.02;
+  cube.rotation.y += 0.01;
+  cube.rotation.z += 0.01;
+
+  cube2.rotation.x += 0.01;
+  cube2.rotation.y += 0.02;
+  cube2.rotation.z += 0.01;
+
+  cube3.rotation.x += 0.01;
+  cube3.rotation.y += 0.01;
+  cube3.rotation.z += 0.02;
+
+
+
+
+  cone.rotation.y -= 0.01;
+  cone2.rotation.y += 0.01;
+  cone3.rotation.y += 0.01;
+
+  // mountainShape.rotation.x += 0.01;
 
   // cube.rotate.z(-40);
 
@@ -181,6 +320,8 @@ var animate = function () {
   // console.log(sphere.position.x);
   // randomize();
   renderer.render( scene, camera );
+
+  updateCamPosition();
 };
 
 function randomize()
@@ -198,20 +339,20 @@ function randomize()
 
 
 
-function updateCamPosition() {
-  // rotate our camera's position on the z/y axis
-  angle += 0.005;
-  var z = 100 * Math.cos(angle);
-  var y = 100 * Math.sin(angle);
-  camera.position.z = z;
-  camera.position.y = y;
-
-  /* rotate the camera so the angle it faces animates -
-   there's no exact science to this - I just picked a
-   random percentage of the z position */
-
-  camera.rotation.x = z*0.02;
-}
+// function updateCamPosition() {
+//   // rotate our camera's position on the z/y axis
+//   angle += 0.005;
+//   var z = 100 * Math.cos(angle);
+//   var y = 100 * Math.sin(angle);
+//   camera.position.z = z;
+//   camera.position.y = y;
+//
+//   /* rotate the camera so the angle it faces animates -
+//    there's no exact science to this - I just picked a
+//    random percentage of the z position */
+//
+//   camera.rotation.x = z*0.02;
+// }
 
 // updateCamPosition();
 animate();
@@ -280,6 +421,7 @@ coneGui.add(cone.position, 'y');
 coneGui.add(cone.position, 'z');
 coneGui.add(cone.rotation, 'x');
 coneGui.add(cone.rotation, 'y');
+// coneGui.add(height, 'height');
 // coneGui.add(cone.radius);
 coneGui.open();
 
