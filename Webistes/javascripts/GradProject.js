@@ -8,13 +8,6 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 
-// function addCrystal()
-// {
-  // var geometry = new THREE.BoxGeometry();
-  // var material = new THREE.MeshBasicMaterial( { color: 0x00ff00,wireframe: false } );
-
-
-
   // var material = new THREE.MeshNormalMaterial();
   var color = new THREE.Color( "rgba(0,70,255,1)" );
   var material = new THREE.MeshLambertMaterial( {color: color.getHex()} );
@@ -67,13 +60,6 @@ document.body.appendChild( renderer.domElement );
   }
 
 
-
-
-  //
-  // cube.position.x=Math.random(-3,3);
-
-// }
-
 var radius=5;
 var height=15;
 var radialSegments=32;
@@ -82,8 +68,7 @@ var geometryCone = new THREE.ConeGeometry( radius, height, radialSegments );
 // var colorCone = new THREE.Color("#1A1AFF");
 var colorCone = new THREE.Color( "#1A1AFF" );
 var materialCone = new THREE.MeshLambertMaterial( {color: colorCone.getHex()} );
-// var materialCone = new THREE.MeshPhongMaterial( {color: colorCone.getHex(), specular: 0xFFFF00, shinyness: 10 } );
-// var materialCone = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+
 var cone = new THREE.Mesh( geometryCone, materialCone );
 // scene.add(cone);
 
@@ -91,8 +76,7 @@ var geometryCone = new THREE.ConeGeometry( radius, height, radialSegments );
 // var colorCone = new THREE.Color("#1A1AFF");
 var colorCone = new THREE.Color( "#1A1AFF" );
 var materialCone = new THREE.MeshLambertMaterial( {color: colorCone.getHex()} );
-// var materialCone = new THREE.MeshPhongMaterial( {color: colorCone.getHex(), specular: 0xFFFF00, shinyness: 10 } );
-// var materialCone = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+
 var cone2 = new THREE.Mesh( geometryCone, materialCone );
 // scene.add(cone2);
 
@@ -100,8 +84,6 @@ var geometryCone = new THREE.ConeGeometry( radius, height, radialSegments );
 // var colorCone = new THREE.Color("#1A1AFF");
 var colorCone = new THREE.Color( "#1A1AFF" );
 var materialCone = new THREE.MeshLambertMaterial( {color: colorCone.getHex()} );
-// var materialCone = new THREE.MeshPhongMaterial( {color: colorCone.getHex(), specular: 0xFFFF00, shinyness: 10 } );
-// var materialCone = new THREE.MeshBasicMaterial( {color: 0xffff00} );
 var cone3 = new THREE.Mesh( geometryCone, materialCone );
 // scene.add(cone3);
 
@@ -113,7 +95,7 @@ cone3.position.x=-radius*2;
 
 var loader = new THREE.FontLoader();
 
-loader.load( 'Plugins/three/examples/fonts/helvetiker_regular.typeface.json', function ( font ) {
+loader.load( 'Plugins/builder/helvetiker_regular.typeface.json', function ( font ) {
 
 	var geometry = new THREE.TextGeometry( 'Hello three.js!', {
 		font: font,
@@ -142,27 +124,6 @@ function updateCamPosition() {
   camera.position.z = z;
   // camera.position.y = y;
 
-  // l = geometry.vertices.size;
-  // console.log(l)
-
-  // for (var i = 0, l = geometry.vertices.length; i<l; i++) {
-  //     // we'll move the x & y position of each vertice by a random amount
-  //   geometry.vertices[i].x += z;
-  //   geometry.vertices[i].y += z;
-  // }
-
-
-//   for (var i = 0, l = geometryCone.vertices.length; i<l; i++) {
-//     // we'll move the x & y position of each vertice by a random amount
-//   geometryCone.vertices[i].x = z;
-//   geometryCone.vertices[i].y = z;
-// }
-
-  /* rotate the camera so the angle it faces animates -
-   there's no exact science to this - I just picked a
-   random percentage of the z position */
-
-  // camera.rotation.x = z*0.02;
 }
 
 
@@ -176,17 +137,7 @@ var mountainShape = new THREE.Shape();
  mountainShape.moveTo( x - 20, y - 20 );
  mountainShape.lineTo( x - 5, y + 5);
  mountainShape.lineTo( x , y + 10 );
- // mountainShape.lineTo( x , y + 10 );
- // mountainShape.lineTo( x+5 , y + 5 );
 
-
- // mountainShape.lineTo( x+1 , y +2 );
- // mountainShape.lineTo( x+10 , y + 7 );
-
-  // mountainShape.moveTo( x + 20, y - 20 );
-  // mountainShape.lineTo( x + 5, y + 5);
-  // mountainShape.lineTo( x , y + 10 );
-  // mountainShape.lineTo( x-1 , y +2 );
 var extrudeSettings = { amount: 1, bevelEnabled: false, bevelSegments: 2, steps: 2, bevelSize: 1, bevelThickness: 1 };
 
  var geometry = new THREE.ExtrudeBufferGeometry( mountainShape, extrudeSettings );
@@ -232,32 +183,6 @@ var mesh = new THREE.Mesh( geometry, new THREE.MeshPhongMaterial() );
 
 
 
-// var loader = new THREE.FontLoader();
-//
-// loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
-//
-// 	var geometry = new THREE.TextGeometry( 'Hello three.js!', {
-// 		font: font,
-// 		size: 400,
-// 		height: 5,
-// 		curveSegments: 12,
-// 		bevelEnabled: true,
-// 		bevelThickness: 10,
-// 		bevelSize: 8,
-// 		bevelOffset: 0,
-// 		bevelSegments: 5
-// 	});
-// });
-
-
-// addCrystal();
-
-
-// var sphereGeometry = new THREE.SphereGeometry(.7);
-// var material2 = new THREE.MeshBasicMaterial( { color: 0x00FFFF, wireframe: false } );
-// var sphere = new THREE.Mesh(sphereGeometry, material2 );
-// scene.add( sphere );
-
 
 
 // as if we're turning on a lightbulb within the room
@@ -293,32 +218,10 @@ var animate = function () {
   cube3.rotation.z += 0.02;
 
 
-
-
   cone.rotation.y -= 0.01;
   cone2.rotation.y += 0.01;
   cone3.rotation.y += 0.01;
 
-  // mountainShape.rotation.x += 0.01;
-
-  // cube.rotate.z(-40);
-
-  // sphere.rotation.x += 0.02;
-  // sphere.rotation.y += 0.01;
-
-  // var smoothing=300;
-  // var peak=1;
-  // for (var i = 0; i <= geometry.length; i ++) {
-  //     geometry.vertices[i].x += peak * perlin.noise(vertices[i]/smoothing,vertices[i])/smoothing;
-  //
-  //   }
-
-
-  // var x=0.01+0.01;
-  // tweenIcosahedron();
-  // sphere.position.x= 10+30*Math.sin(x);
-  // console.log(sphere.position.x);
-  // randomize();
   renderer.render( scene, camera );
 
   updateCamPosition();
@@ -337,63 +240,8 @@ function randomize()
     }
 }
 
-
-
-// function updateCamPosition() {
-//   // rotate our camera's position on the z/y axis
-//   angle += 0.005;
-//   var z = 100 * Math.cos(angle);
-//   var y = 100 * Math.sin(angle);
-//   camera.position.z = z;
-//   camera.position.y = y;
-//
-//   /* rotate the camera so the angle it faces animates -
-//    there's no exact science to this - I just picked a
-//    random percentage of the z position */
-//
-//   camera.rotation.x = z*0.02;
-// }
-
-// updateCamPosition();
 animate();
 
-
-// function getOriginalVerticePositions() {
-//   // go through each vertice geometry and store their position in an array
-//   for (var i = 0, l = geometry.vertices.length; i<l; i++) {
-//     verticePositions.push({x: geometry.vertices[i].x, y: geometry.vertices[i].y});
-//   }
-// }
-//
-//
-// function getNewVertices() {
-//   /* this function returns an array of vertice positions which are randomised
-//   from the original vertice position */
-//   var newVertices = [];
-//   for (var i = 0, l = geometry.vertices.length; i<l; i++) {
-//     newVertices[i] = {
-//       x: verticePositions[i].x -5 + Math.random()*10,
-//       y: verticePositions[i].y -5 + Math.random()*10
-//     }
-//   }
-//   return newVertices;
-// }
-//
-// function tweenIcosahedron() {
-//   var newVerticePositions = getNewVertices();
-//   // tween each vertice to their new position
-//   for (var i = 0; i < geometry.vertices.length; i++) {
-//     tweenVertice(i, newVerticePositions);
-//   }
-// }
-//
-// function tweenVertice(i, newVerticePositions) {
-//   // set the tween
-//   TweenLite.to(geometry.vertices[i], 1, {x: newVerticePositions[i].x, y: newVerticePositions[i].y, ease: Back.easeInOut, onComplete: function() {
-//     // start the icosahedron tween again now the animation is complete
-//     if (i === 0) tweenIcosahedron();
-//   }});
-// }
 
 
 // dat gui

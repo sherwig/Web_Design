@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Skis from './ski.js'
+import Bindings from './skis2.js'
 
 function App() {
   return (
@@ -19,23 +20,25 @@ function App() {
     //     >
     //       Learn React cool
     //     </a>
-    <Skis name= 'skimanguy'/>
+    <div>
+      <Skis name= 'Mindbenders'/>
+      <Skis name= 'Camox Freebirds'/>
+      <Skis name= 'Benchetlers'/>
+
+      <Bindings name= 'Shifts'/>
+      <Bindings name= 'Pivots'/>
+      <Bindings name= 'Markers'/>
+    </div>
+
+    // <div>
+    //
+    // </div>
+
     //   </header>
     // </div>
 
 
 
-
-
-    // <div className="shopping-list">
-    //     <h1>Shopping List for {this.props.name}</h1>
-    //     <ul>
-    //       <li>Instagram</li>
-    //       <li>WhatsApp</li>
-    //       <li>Oculus</li>
-    //     </ul>
-    //
-    // </div>
 
   );
 }
