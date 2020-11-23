@@ -5,15 +5,13 @@ import './App.css';
 // import Bindings from './skis2.js'
 import Product from './Product.js'
 
-//To  publish go to framework resources                           
+//To  publish go to framework resources
 
 function App() {
   return (
-
     <div>
       <Product/>
     </div>
-
   );
 }
 

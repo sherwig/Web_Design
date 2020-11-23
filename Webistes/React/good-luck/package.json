@@ -1,6 +1,6 @@
 {
   "name": "good-luck",
-  "homepage": "https://creative.colorado.edu/~sahe2032/Web_Design_Herwig/React/good-luck",
+  "homepage": "https://creative.colorado.edu/~sahe2032/Web_Design_Herwig/React/good-luck2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4"
   },
   "scripts": {

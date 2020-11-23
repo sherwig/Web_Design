@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/css/main.5f361e03.chunk.css",
+    "main.js": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/js/main.82764e5e.chunk.js",
+    "main.js.map": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/js/main.82764e5e.chunk.js.map",
+    "runtime-main.js": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/js/runtime-main.ff898d57.js",
+    "runtime-main.js.map": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/js/runtime-main.ff898d57.js.map",
+    "static/js/2.7e2f5f9a.chunk.js": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/js/2.7e2f5f9a.chunk.js",
+    "static/js/2.7e2f5f9a.chunk.js.map": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/js/2.7e2f5f9a.chunk.js.map",
+    "index.html": "/~sahe2032/Web_Design_Herwig/React/good-luck2/index.html",
+    "precache-manifest.82d4aacc201db0bf144b42f4510eba51.js": "/~sahe2032/Web_Design_Herwig/React/good-luck2/precache-manifest.82d4aacc201db0bf144b42f4510eba51.js",
+    "service-worker.js": "/~sahe2032/Web_Design_Herwig/React/good-luck2/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.7e2f5f9a.chunk.js.LICENSE.txt": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/js/2.7e2f5f9a.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/~sahe2032/Web_Design_Herwig/React/good-luck2/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ff898d57.js",
+    "static/js/2.7e2f5f9a.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.82764e5e.chunk.js"
+  ]
+}

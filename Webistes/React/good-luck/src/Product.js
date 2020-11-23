@@ -1,61 +1,117 @@
 import React from 'react';
-
 // import './App.css';
 import Skis from './ski.js'
 // import NameForm from './skis2.js'
+
 
 class Product extends React.Component{
     constructor(props){
     super(props);
     this.state={
-        totalVotes:3,
+        totalVotes:0,
         value: '',
-        todo: [
-          { key: 0,
-            name: "Figure Life Out"
-          },
-          { key: 1,
-            name: "Get Job"
-          },
-          { key: 2,
-            name: "Go Skiing"
-          }
+        counter:0,
+        todo:
+        [
+          // { key: 0,
+          //   name: "Figure Life Out"
+          // },
+          // { key: 1,
+          //   name: "Get Job"
+          // },
+          // { key: 2,
+          //   name: "Go Skiing"
+          // }
         ]
     };
+
+
 
   //binding is necessary for 'this' to work in the callback
   this.handleChange = this.handleChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
-
   this.handleVoteChange = this.handleVoteChange.bind(this);
+  this.handleVoteDown = this.handleVoteDown.bind(this);
+  this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
+    // { console.log(this.state.value) }
   }
 
   handleVoteChange(){
     this.setState({totalVotes: this.state.totalVotes+1});
   }
 
-  render(){
-    // const foods = [
-    //   { key: 0,
-    //     name: "Figure Life Out"
-    //   },
-    //   { key: 1,
-    //     name: "Get Job"
-    //   },
-    //   { key: 2,
-    //     name: "Go Skiing"
-    //   }
-    // ];
+  handleVoteDown(){
+    this.setState({totalVotes: this.state.totalVotes-1});
+  }
 
+  // onRemoveItem = i => {
+  //    this.setState(state => {
+  //      const list = state.todo.filter((item, j) => i !== j);
+  //      return {
+  //        list,
+  //      };
+  //    });
+  //  };
+
+// https://www.robinwieruch.de/react-state-array-add-update-remove
+  handleSubmit(event) {
+      var newTodo=
+        {
+          id: this.state.counter,
+          name: this.state.value
+        };
+
+        this.state.todo.push(newTodo);
+      // return {
+      //   todo,
+      //   value: ''
+      // };
+  this.setState({todo: this.state.todo });
+
+    {console.log(this.state.todo)}
+    this.handleVoteChange();
+    this.setState({counter: this.state.counter+1});
+    event.preventDefault();
+  }
+
+  // handleDelete = id => {
+  //   this.setState({
+  //     todo: this.state.todo.filter(
+  //       item => item.id !== id
+  //     )
+  //   });
+  //   this.handleVoteDown();
+  //   {console.log(this.state.todo) }
+  // };
+
+
+
+  handleDelete(id)
+  {
+    {console.log(id)}
+    const newToDo = this.state.todo.filter(item => item.id !==id);
+    this.setState(
+      {
+        todo: newToDo
+      });
+    this.handleVoteDown()
+  }
+
+  // var todo = this.state.todo.filter(item => item.id !== id);
+  //  // {console.log(this.state.todo.item.id) }
+  // this.setState({ todo: todo });
+
+  // handleDelete(id)
+  // {
+  //
+  //
+  // }
+
+  render(){
     var listStyle={
       width: "80%",
       margin: "0",
@@ -97,6 +153,8 @@ class Product extends React.Component{
 
     // <ul style={listStyle}> {foods.map(item => <li style={itemStyle} key={item.key}> <Skis name={item.name} onVoteChange={this.handleVoteChange}/></li>)}
 // onVoteChange={this.handleVoteChange}
+// <button type="button" onClick={this.handleClick}> Remove </button>
+
 
   return (
       <div>
@@ -107,24 +165,21 @@ class Product extends React.Component{
 
       <div style={submitStyle}>
       <form onSubmit={this.handleSubmit}>
-        <label >
+        <label>
           To Do:
-         <input type="text"  value={this.state.value} onChange={this.handleChange} />
+        <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>
+
       </div>
-
-      <ul style={listStyle}> {this.state.todo.map(item => <li style={itemStyle} key={item.key}><Skis name={item.name}/></li>)}
-
-
+      <ul style={listStyle}> {this.state.todo.map(item => <li style={itemStyle} key={item.id}><Skis name={item.name} id={item.id} delete={this.handleDelete}/></li>)}
       </ul>
-      <h2 style={headerStyle}>Total votes: {this.state.totalVotes}</h2>
+      <h2 style={headerStyle}>Total things to do: {this.state.totalVotes}</h2>
       </div>
     </div>
     );
   }
-
 }
 
 export default Product;
